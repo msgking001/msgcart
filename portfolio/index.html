@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathesh - AI-Powered Content & Creative Web Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'tech-blue': '#0066FF',
+                        'tech-dark': '#1a1a1a',
+                        'tech-gray': '#f8f9fa'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tech-shadow {
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .tech-grid {
+            background-image: 
+                linear-gradient(rgba(0, 102, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.15);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 102, 255, 0.6); }
+        }
+
+        /* Modern Hero Styles */
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15), transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.15), transparent 50%);
+            z-index: 1;
+        }
+
+        .floating-orbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .orb:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .orb:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .orb:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            33% { 
+                transform: translateY(-30px) translateX(20px) rotate(120deg);
+                opacity: 0.6;
+            }
+            66% { 
+                transform: translateY(20px) translateX(-20px) rotate(240deg);
+                opacity: 0.4;
+            }
+        }
+
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .typewriter-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: rgba(255, 255, 255, 0.75) }
+        }
+
+        .modern-button {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .modern-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .modern-button:hover::before {
+            left: 100%;
+        }
+
+        .modern-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .status-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: statusPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+        }
+
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-stats:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .social-link {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-description {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-white text-tech-dark font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">Mathesh</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-tech-blue transition-colors font-medium">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-tech-blue transition-colors font-medium">Services</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-tech-blue transition-colors font-medium">Portfolio</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-tech-blue transition-colors font-medium">Reviews</a>
+                    <a href="#contact" class="text-gray-700 hover:text-tech-blue transition-colors font-medium">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-tech-blue font-medium">Home</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-tech-blue font-medium">Services</a>
+                <a href="#portfolio" class="block py-2 text-gray-700 hover:text-tech-blue font-medium">Portfolio</a>
+                <a href="#testimonials" class="block py-2 text-gray-700 hover:text-tech-blue font-medium">Reviews</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-tech-blue font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center hero-bg relative overflow-hidden">
+        <!-- Floating Orbs -->
+        <div class="floating-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+        </div>
+        
+        <!-- Particles -->
+        <div class="particles-container" id="particles-hero"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 text-center hero-content">
+            <div class="fade-in">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center px-6 py-3 status-badge rounded-full text-white font-medium mb-12">
+                    <span class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+                    Available for Projects
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="hero-title text-white mb-8">
+                    Hi, I'm <span class="typewriter-container">
+                        <span class="typewriter text-white">Mathesh</span>
+                    </span>
+                </h1>
+                
+                <!-- Tagline -->
+                <h2 class="hero-subtitle text-white/90 mb-10">
+                    AI-Powered Content & Creative Web Solutions 🚀
+                </h2>
+                
+                <!-- Description -->
+                <p class="hero-description text-white/80 mb-16 max-w-4xl mx-auto">
+                    I help businesses and professionals stand out with compelling content, stunning resumes, 
+                    engaging social media designs, and modern web solutions that drive results.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+                    <a href="#portfolio" class="modern-button text-white px-10 py-4 rounded-full font-semibold relative z-10">
+                        <span class="relative z-10">View My Work</span>
+                    </a>
+                    <a href="#contact" class="glass-button text-white px-10 py-4 rounded-full font-semibold">
+                        Hire Me Now
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-16">
+                    <div class="hero-stats text-center p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-white mb-2">50+</div>
+                        <div class="text-white/70 text-sm">Projects Done</div>
+                    </div>
+                    <div class="hero-stats text-center p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-white mb-2">100%</div>
+                        <div class="text-white/70 text-sm">Client Satisfaction</div>
+                    </div>
+                    <div class="hero-stats text-center p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-white mb-2">24h</div>
+                        <div class="text-white/70 text-sm">Quick Turnaround</div>
+                    </div>
+                    <div class="hero-stats text-center p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-white mb-2">3+</div>
+                        <div class="text-white/70 text-sm">Years Experience</div>
+                    </div>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="social-link w-14 h-14 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link w-14 h-14 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link w-14 h-14 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link w-14 h-14 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="flex flex-col items-center">
+                <span class="text-sm mb-2 font-medium">Scroll Down</span>
+                <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-tech-gray">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">My Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    I offer comprehensive digital solutions to help you succeed in today's competitive market
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Resume Writing -->
+                <div class="service-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Resume Writing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Professional, ATS-optimized resumes that get you noticed by recruiters and land interviews at top companies.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>ATS-Optimized Format</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Industry-Specific Keywords</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Professional Design</li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Content -->
+                <div class="service-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v1M7 4V3a1 1 0 011-1h8a1 1 0 011 1v1m-9 4h10M8 21l4-7 4 7M8 21h8"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Social Media Content</h3>
+                    <p class="text-gray-600 mb-6">
+                        Eye-catching social media content packs that boost engagement and grow your online presence across all platforms.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Custom Graphics & Posts</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Brand-Consistent Design</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Multi-Platform Ready</li>
+                    </ul>
+                </div>
+
+                <!-- Blog & Article Writing -->
+                <div class="service-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Blog & Article Writing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Compelling, SEO-optimized content that educates your audience and establishes your authority in your industry.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>SEO-Optimized Content</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Research-Backed Articles</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Engaging Storytelling</li>
+                    </ul>
+                </div>
+
+                <!-- Web Development -->
+                <div class="service-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Modern, responsive websites that convert visitors into customers with clean design and powerful functionality.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Responsive Design</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>Fast Loading Speed</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-tech-blue rounded-full mr-3"></span>SEO-Friendly Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">My Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Take a look at some of my recent work and see how I've helped clients achieve their goals
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Resume Sample -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-tech-blue to-blue-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Professional Resume</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Executive Resume Design</h3>
+                        <p class="text-gray-600 mb-4">Modern, ATS-optimized resume for a senior marketing executive that landed 5 interviews in 2 weeks.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-tech-blue/10 text-tech-blue text-sm rounded-full">Resume Writing</span>
+                            <span class="px-3 py-1 bg-tech-blue/10 text-tech-blue text-sm rounded-full">ATS-Optimized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Design -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Social Media Pack</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Brand Social Media Kit</h3>
+                        <p class="text-gray-600 mb-4">Complete social media content pack for a tech startup, including 30 posts and story templates.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Social Media</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Brand Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Article -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Blog Article</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">SEO Blog Series</h3>
+                        <p class="text-gray-600 mb-4">10-part blog series on digital marketing trends that increased organic traffic by 150%.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Content Writing</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website Mockup -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3,3H21A1,1 0 0,1 22,4V16A1,1 0 0,1 21,17H14L12,19L10,17H3A1,1 0 0,1 2,16V4A1,1 0 0,1 3,3M4,5V15H9.5L12,17.5L14.5,15H20V5H4Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Website Design</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Website</h3>
+                        <p class="text-gray-600 mb-4">Modern e-commerce platform for a fashion brand with 40% increase in conversion rates.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Web Development</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Strategy -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8L6,7L4,9M4,19H8L6,17L4,19M4,14H8L6,12L4,14Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Content Strategy</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Content Marketing Plan</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive content strategy that doubled social media engagement for a B2B company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full">Strategy</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="portfolio-item bg-tech-gray rounded-2xl overflow-hidden hover-lift cursor-pointer">
+                    <div class="h-64 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+                            </svg>
+                            <h4 class="text-xl font-bold">Portfolio Site</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Creative Portfolio</h3>
+                        <p class="text-gray-600 mb-4">Interactive portfolio website for a photographer that showcases work beautifully.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-sm rounded-full">Portfolio</span>
+                            <span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-sm rounded-full">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-tech-gray">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Don't just take my word for it - here's what my clients say about working with me
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-tech-blue to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            A
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Alex Thompson</h4>
+                            <p class="text-sm text-gray-600">Marketing Director</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Mathesh created an outstanding resume that got me interviews at 3 Fortune 500 companies. His attention to detail and understanding of ATS systems is exceptional."
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Resume Writing Project</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            S
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-600">Startup Founder</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "The social media content pack Mathesh designed for our startup was incredible. Our engagement increased by 200% in just one month!"
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Social Media Design</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            M
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Michael Chen</h4>
+                            <p class="text-sm text-gray-600">Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Mathesh built us a beautiful website that perfectly represents our brand. The site is fast, responsive, and converts visitors into customers."
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Web Development</div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            E
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Emily Rodriguez</h4>
+                            <p class="text-sm text-gray-600">Content Manager</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "The blog articles Mathesh wrote for us are top-notch. They're well-researched, engaging, and have significantly improved our SEO rankings."
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Content Writing</div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            D
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">David Park</h4>
+                            <p class="text-sm text-gray-600">HR Manager</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Working with Mathesh was a pleasure. He delivered everything on time and exceeded our expectations. Highly recommended!"
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Multiple Projects</div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card bg-white p-8 rounded-2xl hover-lift tech-shadow cursor-pointer">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            L
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Lisa Wang</h4>
+                            <p class="text-sm text-gray-600">Creative Director</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Mathesh has an incredible eye for design and understands what works in today's digital landscape. Our brand looks amazing!"
+                    </p>
+                    <div class="text-sm text-tech-blue font-semibold">Brand Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                    Let's discuss your project and see how I can help you achieve your goals. 
+                    I'm just one message away from bringing your vision to life.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <a href="mailto:mathesh@example.com" class="bg-tech-blue text-white px-10 py-4 rounded-full font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 tech-shadow pulse-glow">
+                        📧 Hire Me Now
+                    </a>
+                    <a href="https://wa.me/1234567890" class="border-2 border-tech-blue text-tech-blue px-10 py-4 rounded-full font-semibold hover:bg-tech-blue hover:text-white transition-all duration-300 transform hover:scale-105">
+                        💬 Message Me
+                    </a>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-tech-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Email</h3>
+                        <p class="text-gray-600">mathesh@example.com</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-tech-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">WhatsApp</h3>
+                        <p class="text-gray-600">+1 (555) 123-4567</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-tech-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-tech-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Response Time</h3>
+                        <p class="text-gray-600">Within 2 hours</p>
+                    </div>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="w-12 h-12 bg-tech-blue/10 rounded-full flex items-center justify-center hover:bg-tech-blue hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-tech-blue/10 rounded-full flex items-center justify-center hover:bg-tech-blue hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-tech-blue/10 rounded-full flex items-center justify-center hover:bg-tech-blue hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-tech-blue/10 rounded-full flex items-center justify-center hover:bg-tech-blue hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-tech-dark text-white py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold gradient-text mb-4">Mathesh</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    AI-Powered Content & Creative Web Solutions. Helping businesses and professionals 
+                    succeed with compelling content and modern digital solutions.
+                </p>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-gray-400">© 2024 Mathesh. All rights reserved. Built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Service card click handlers
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const serviceName = this.querySelector('h3').textContent;
+                alert(`Learn more about ${serviceName}! Contact me to discuss your project requirements and get a custom quote.`);
+            });
+        });
+
+        // Portfolio item click handlers
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const projectName = this.querySelector('h3').textContent;
+                alert(`Viewing ${projectName}! This would normally open a detailed case study with more images and project details.`);
+            });
+        });
+
+        // Testimonial card click handlers
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const clientName = this.querySelector('h4').textContent;
+                alert(`Full testimonial from ${clientName}! This would normally show the complete review and project details.`);
+            });
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-tech-blue');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-tech-blue');
+                }
+            });
+        });
+
+        // Create floating particles for hero section
+        function createHeroParticles() {
+            const particlesContainer = document.getElementById('particles-hero');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Typewriter effect restart
+        function restartTypewriter() {
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                typewriterElement.style.animation = 'none';
+                setTimeout(() => {
+                    typewriterElement.style.animation = 'typing 4s steps(40, end), blink-caret 0.75s step-end infinite';
+                }, 100);
+            }
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create hero particles
+            createHeroParticles();
+            
+            // Restart typewriter every 8 seconds
+            setInterval(restartTypewriter, 8000);
+            
+            // Add hover effects to hero stats
+            const heroStats = document.querySelectorAll('.hero-stats');
+            heroStats.forEach(stat => {
+                stat.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.05)';
+                    this.style.background = 'rgba(255, 255, 255, 0.2)';
+                });
+                stat.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+
+            // Add click effects to social links
+            const socialLinks = document.querySelectorAll('.social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.width = '20px';
+                    ripple.style.height = '20px';
+                    ripple.style.marginLeft = '-10px';
+                    ripple.style.marginTop = '-10px';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b68a27f2c8913b',t:'MTc1NzI1MTYwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

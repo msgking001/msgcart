@@ -1,0 +1,95 @@
+[
+   {
+    "name":"mobile",
+    "price": 10000,
+    "description": "A high-end smartphone with 128GB storage and 6GB RAM.",
+    "ratings": 4.5,
+    "image": [{"file_img":"https://example.com/images/mobile.jpg"}],
+    "category": "Electronics",
+    "seller": "TechStore",
+    "stock": 10,
+    "numofReviews": 5,
+    "reviews":[{
+        "name": "John Doe",
+        "rating": 5,
+        "comment": "Great phone with excellent features!"
+    }]
+    },
+    {
+  "name": "Smartphone Pro Max",
+  "price": 25999,
+  "description": "A powerful smartphone with AMOLED display and 8GB RAM.",
+  "ratings": 4.6,
+  "image": [{"file_img": "https://example.com/images/smartphone.jpg"}],
+  "category": "Mobile",
+  "seller": "MobileMart",
+  "stock": 25,
+  "numofReviews": 12,
+  "reviews": [
+    {
+      "name": "Amit Verma",
+      "rating": 5,
+      "comment": "Awesome mobile with great performance!"
+    }
+  ]
+},
+{
+  "name": "Ultrabook X15",
+  "price": 54999,
+  "description": "Lightweight laptop with i7 processor, 512GB SSD, and 16GB RAM.",
+  "ratings": 4.7,
+  "image": [{"file_img": "https://example.com/images/laptop.jpg"}],
+  "category": "Laptops",
+  "seller": "TechBazaar",
+  "stock": 15,
+  "numofReviews": 8,
+  "reviews": [
+    {
+      "name": "Sneha R",
+      "rating": 4,
+      "comment": "Good battery life, perfect for work!"
+    }
+  ]
+},
+{
+  "name": "Noise Cancelling Headphones",
+  "price": 4999,
+  "description": "Over-ear headphones with Bluetooth 5.0 and noise cancellation.",
+  "ratings": 4.3,
+  "image": [{"file_img": "https://example.com/images/headphones.jpg"}],
+  "category": "Headphones",
+  "seller": "SoundHub",
+  "stock": 40,
+  "numofReviews": 20,
+  "reviews": [
+    {
+      "name": "Karan M",
+      "rating": 5,
+      "comment": "Crystal clear sound, very comfortable!"
+    }
+  ]
+},
+{
+  "name": "Assorted Chocolate Box",
+  "price": 799,
+  "description": "Premium dark and milk chocolates with nuts and caramel.",
+  "ratings": 4.8,
+  "image": [{"file_img": "https://example.com/images/chocolates.jpg"}],
+  "category": "Food",
+  "seller": "SweetTreats",
+  "stock": 100,
+  "numofReviews": 35,
+  "reviews": [
+    {
+      "name": "Nisha K",
+      "rating": 5,
+      "comment": "Delicious and beautifully packed!"
+    }
+  ]
+}
+
+
+
+
+    
+]
