@@ -1,7 +1,7 @@
-const { request } = require("express");
 const catchasyncerror = require("../middleware/catchasyncerror");
 const orderModel = require("../models/order_model");
 const errorHandler =require("../utils/errorhandler");
+const Product=require('../models/product_model');
 //Creating New Order-api/v1/order/now
 exports.newOrder = catchasyncerror(async (req, res, next) => {
   const {
@@ -93,3 +93,15 @@ async function updateStock(id,quantity){
     product.Stock-=quantity;
     await product.save({validateBeforeSave:false});
 }
+//Admin: Delete Order -api/v1/order/:id
+exports.deleteOrder =catchasyncerror( async(req,res,next)=>{
+    const order =await orderModel.findById(req.params.id);
+    if(!order){
+   return next(new errorHandler("Oreder not found",404)) // If product not found, throw an error
+    }
+ await order.remove();
+
+ res.status(200).json({
+    success: true
+ })
+})
