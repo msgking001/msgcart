@@ -75,7 +75,9 @@ exports.updateOrder=catchasyncerror(async(req,res,next)=>{
     if(order.orderStatus==="Delivered"){
         return next(new errorHandler("You have already delivered this order",400))
     }
-    order.orderItems.forEach(async(item)=>{
+    //updating the stock of each ordered item
+    order.orderItems.forEach(async item =>{
+        
         await updateStock(item.product,item.quantity);
     })
     order.orderStatus=req.body.status;
@@ -89,19 +91,21 @@ exports.updateOrder=catchasyncerror(async(req,res,next)=>{
     })
 })
 async function updateStock(id,quantity){
-    const product= await Product.findById(id);
-    product.Stock-=quantity;
+    const product= await Product.findByIdAndUpdate(id);
+   
+    product.stock=product.stock-quantity;
     await product.save({validateBeforeSave:false});
 }
 //Admin: Delete Order -api/v1/order/:id
 exports.deleteOrder =catchasyncerror( async(req,res,next)=>{
     const order =await orderModel.findById(req.params.id);
     if(!order){
-   return next(new errorHandler("Oreder not found",404)) // If product not found, throw an error
+   return next(new errorHandler("Order not found",404)) // If product not found, throw an error
     }
- await order.remove();
-
- res.status(200).json({
-    success: true
+   await orderModel.findByIdAndDelete(req.params.id);//we using mongoose 7 so remove() was not valid
+//await is important for req success
+ res.status(201).json({
+    success: true,
+    message:"order deleted"
  })
 })

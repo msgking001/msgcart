@@ -9,7 +9,7 @@ const server= app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`);
 });
 process.on('unhandledRejection',(err)=>{
-    console.error(`Unhandled Rejection: ${err.message}`);
+    console.error(`Unhandled Rejection: ${err.message + err.stack}`);
     console.log('Shutting down the server due to unhandled promise rejection');
     server.close(()=>{
         process.exit(1);
