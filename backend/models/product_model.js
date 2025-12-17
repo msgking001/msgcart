@@ -47,13 +47,11 @@ const productSchema = new mongoose.Schema( //create new product on every call.
         },
         numOfReviews:{
             type:Number,
-            default:0
+             default:0
         },
         reviews:[
-            {name:{
-                type:String,
-                required:true
-            },
+            {
+            user:mongoose.Schema.Types.ObjectId,
             rating:{
                 type:String,
                 required:true

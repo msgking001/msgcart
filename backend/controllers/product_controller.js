@@ -77,3 +77,76 @@ exports.deleteProduct= catchAsyncError( async (req,res,next)=>{
     })
 }
 )
+//create revieww-api/v1/review
+exports.createReview= catchAsyncError(async (req,res,next)=>{
+    const {productId,rating ,comment}=req.body; 
+    const review={
+        user:req.user.id,
+        rating,
+        comment
+    }
+    //finding user rwview exists
+    const product =await Product.findById(productId);
+  const isReviewed=product.reviews.find((review)=>{
+        return review.user.toString()==req.user.id.toString()
+    })
+    if(isReviewed){
+product.reviews.forEach(review =>{
+   if(review.user.toString()==req.user.id.toString()){
+    review.comment= comment;
+    review.rating=rating;
+   }
+}) 
+    }else{
+        product.reviews.push(review);
+        product.numOfReviews=product.reviews.length;
+    }
+    //finding the average of the reviews
+    product.ratings=product.reviews.reduce((acc,review)=>{
+        return review.rating+acc;
+    },0)/product.reviews.length;
+
+  product.ratings= isNaN( product.ratings)?0:product.ratings;
+
+  await product.save({validatebeforesave:false});
+
+  res.status(200).json({
+    success:true
+  })
+}) 
+//GetReviews -api/v1/Reviews?id={product id}
+exports.getReviews=catchAsyncError( async (req,res,next)=>{
+   
+   const product = await Product.findById(req.query.id);                                                          
+        res.status(200).json({
+        success:true,
+        count:product.reviews.length,
+        reviews:product.reviews
+        
+})})
+//DeleteReview -api/v1/review
+exports.deleteReview= catchAsyncError( async (req,res,next)=>{
+    let product= await Product.findById(req.query.productId);
+    //filtering the reviews which does mmatch the deleting review id
+    const reviews=product.reviews.filter(review=>{
+     return   review._id.toString()!==req.query.id.toString()
+    })
+    //number of reviews
+    const numOfReviews=reviews.length;
+    //finding the average with the filtered reviews
+    let ratings=reviews.reduce((acc,review)=>{
+        return review.rating+acc;
+    },0)/reviews.length;
+
+    ratings= isNaN(ratings)?0:ratings;
+    //save the product details
+await Product.findByIdAndUpdate(req.query.productId,
+    {reviews,
+    numOfReviews,
+    ratings})
+       res.status(200).json({
+        success:true,
+       
+    })
+}
+)
