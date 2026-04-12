@@ -88,7 +88,8 @@ exports.createReview= catchAsyncError(async (req,res,next)=>{
     //finding user rwview exists
     const product =await Product.findById(productId);
   const isReviewed=product.reviews.find((review)=>{
-        return review.user.toString()==req.user.id.toString()
+        return review.user && req.user &&
+        review.user.toString()==req.user.id.toString()
     })
     if(isReviewed){
 product.reviews.forEach(review =>{
@@ -117,7 +118,14 @@ product.reviews.forEach(review =>{
 //GetReviews -api/v1/Reviews?id={product id}
 exports.getReviews=catchAsyncError( async (req,res,next)=>{
    
-   const product = await Product.findById(req.query.id);                                                          
+   const product = await Product.findById(req.query.id).populate('reviews.user','name email');
+   
+    if (!product) {
+        return res.status(404).json({
+            success: false,
+            message: "Product not found"
+        });
+    }                                                          
         res.status(200).json({
         success:true,
         count:product.reviews.length,

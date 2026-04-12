@@ -2,7 +2,7 @@ const catchasyncerror = require("../middleware/catchasyncerror");
 const orderModel = require("../models/order_model");
 const errorHandler =require("../utils/errorhandler");
 const Product=require('../models/product_model');
-//Creating New Order-api/v1/order/now
+//Creating New Order-api/v1/order/new
 exports.newOrder = catchasyncerror(async (req, res, next) => {
   const {
     orderItems,
