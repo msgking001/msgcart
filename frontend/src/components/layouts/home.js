@@ -1,6 +1,14 @@
 import { Fragment } from "react/jsx-runtime";
 import MetaData from "../MetaData";
+import { useEffect } from "react";
+import {useDispatch} from 'react-redux'
+import { getProducts } from "../../actions/productsActions";
 export default function Home() {
+  const dispatch= useDispatch();
+  
+  useEffect(()=>{
+       dispatch(getProducts)
+  },[])
     return(
         <Fragment>
           <MetaData title={'Buy Best products'}/>
