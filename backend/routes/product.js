@@ -2,7 +2,7 @@ const express=require('express');
 const { getProducts, newProduct, getSingleproduct, updateProduct, deleteProduct, createReview, getReviews, deleteReview } = require('../controllers/product_controller');
 const router=express.Router();
 const  {isAuthenticatedUser, authorizeRoles}  = require('../middleware/authenticate');
-router.route('/products').get( isAuthenticatedUser,getProducts);
+router.route('/products').get(getProducts);
 
 router.route('/product/:id')
                             .get(getSingleproduct)// Assuming you want to get a product by ID

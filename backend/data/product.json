@@ -4,11 +4,12 @@
     "price": 10000,
     "description": "A high-end smartphone with 128GB storage and 6GB RAM.",
     "ratings": 4.5,
-    "image": [{"file_img":"https://example.com/images/mobile.jpg"}],
+    "images": [{
+      "image":"./images/products/1.jpg"}],
     "category": "Electronics",
     "seller": "TechStore",
     "stock": 10,
-    "numofReviews": 5,
+    "numOfReviews": 5,
     "reviews":[{
         "name": "John Doe",
         "rating": 5,
@@ -20,11 +21,12 @@
   "price": 25999,
   "description": "A powerful smartphone with AMOLED display and 8GB RAM.",
   "ratings": 4.6,
-  "image": [{"file_img": "https://example.com/images/smartphone.jpg"}],
+  "images": [{
+    "image": "./images/products/2.jpg"}],
   "category": "Mobile",
   "seller": "MobileMart",
   "stock": 25,
-  "numofReviews": 12,
+  "numOfReviews": 12,
   "reviews": [
     {
       "name": "Amit Verma",
@@ -38,11 +40,12 @@
   "price": 54999,
   "description": "Lightweight laptop with i7 processor, 512GB SSD, and 16GB RAM.",
   "ratings": 4.7,
-  "image": [{"file_img": "https://example.com/images/laptop.jpg"}],
+  "images": [
+    {"image": "./images/products/3.jpg"}],
   "category": "Laptops",
   "seller": "TechBazaar",
   "stock": 15,
-  "numofReviews": 8,
+  "numOfReviews": 8,
   "reviews": [
     {
       "name": "Sneha R",
@@ -56,11 +59,11 @@
   "price": 4999,
   "description": "Over-ear headphones with Bluetooth 5.0 and noise cancellation.",
   "ratings": 4.3,
-  "image": [{"file_img": "https://example.com/images/headphones.jpg"}],
+  "images": [{"image": "./images/products/4.jpg"}],
   "category": "Headphones",
   "seller": "SoundHub",
   "stock": 40,
-  "numofReviews": 20,
+  "numOfReviews": 20,
   "reviews": [
     {
       "name": "Karan M",
@@ -74,11 +77,11 @@
   "price": 799,
   "description": "Premium dark and milk chocolates with nuts and caramel.",
   "ratings": 4.8,
-  "image": [{"file_img": "https://example.com/images/chocolates.jpg"}],
+  "images": [{"image": "./images/products/5.jpg"}],
   "category": "Food",
   "seller": "SweetTreats",
   "stock": 100,
-  "numofReviews": 35,
+  "numOfReviews": 35,
   "reviews": [
     {
       "name": "Nisha K",

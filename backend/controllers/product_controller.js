@@ -4,7 +4,7 @@ const catchAsyncError = require('../middleware/catchasyncerror');
 const ApiFeatures = require('../utils/apifeatures');
 //getproducts-{{baseurl}}/api/v1/products
 exports.getProducts=catchAsyncError( async (req,res,next)=>{
-    const resultsPerPage=2;
+    const resultsPerPage=3;
     const apifeatures=new ApiFeatures(Product.find(), req.query)
                                                                 .search()
                                                                 .filter()
@@ -12,7 +12,7 @@ exports.getProducts=catchAsyncError( async (req,res,next)=>{
     //search method is used to filter products based on the keyword provided in the query string.
     
  const product= await apifeatures.query;
-        res.status(200).json({
+      res.status(200).json({
         success:true,
         count:product.length,
         product

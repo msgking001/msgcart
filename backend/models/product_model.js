@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema( //create new product on every call.
         default:0
     },
     images:[{
-        file_img:{
+        image:{
             type:String,
             required:true
         }
