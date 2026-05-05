@@ -5,13 +5,17 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getProducts } from "../../actions/productsActions";
 import Loader from "./Loader";
 import Product from "../product/product";
+import {toast} from 'react-toastify';
 export default function Home() {
   const dispatch= useDispatch();
-  const {products,loading}= useSelector((state) => state.productsState)
+  const {products,loading,error}= useSelector((state) => state.productsState)
   console.log(products)
   useEffect(()=>{
+    if(error){
+      return toast.error(error)
+       }
        dispatch(getProducts())
-  },[])
+  },[error])
     return(
       <Fragment>
         {loading ? <Loader/>:

@@ -10,7 +10,7 @@ exports.getProducts=catchAsyncError( async (req,res,next)=>{
                                                                 .filter()
                                                                 .paginate(resultsPerPage);
     //search method is used to filter products based on the keyword provided in the query string.
-    
+   
  const product= await apifeatures.query;
       res.status(200).json({
         success:true,
