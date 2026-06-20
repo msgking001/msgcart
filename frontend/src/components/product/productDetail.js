@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
 import {Carousel} from 'react-bootstrap'
+import MetaData from "../MetaData";
 export default function ProductDetail(){
  const{loading,product}=   useSelector((state)=>state.productState);
    const dispatch =useDispatch();
@@ -12,11 +13,12 @@ export default function ProductDetail(){
    console.log(id)
     useEffect(()=>{
             dispatch(getProduct(id))
-        },[])
+        },[dispatch,id])
     return(
         <Fragment>
             {loading?<Loader/>:
         <Fragment>
+            <MetaData title={product.name}/>
    <div className="row f-flex justify-content-around">
             <div className="col-12 col-lg-5 img-fluid" id="product_image">
                 <Carousel pause="hover">

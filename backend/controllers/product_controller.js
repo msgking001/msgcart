@@ -12,9 +12,11 @@ exports.getProducts=catchAsyncError( async (req,res,next)=>{
     //search method is used to filter products based on the keyword provided in the query string.
    
  const product= await apifeatures.query;
+ const totalProductsCount= await Product.countDocuments({});
       res.status(200).json({
         success:true,
-        count:product.length,
+        count:totalProductsCount,
+        resultsPerPage,
         product
         
 })}
